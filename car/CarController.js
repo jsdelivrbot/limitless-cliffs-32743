@@ -6,7 +6,7 @@ router.use(bodyParser.urlencoded({ extended: true }));
 
 var Car = require('./Car');
 
-// CREATES A NEW USER
+// CREATES A NEW CAR
 router.post('/', function (req, res) {
     Car.create({
             make : req.body.make,
@@ -19,7 +19,7 @@ router.post('/', function (req, res) {
             res.status(200).send(car);
         });
 });
-// RETURNS ALL THE USERS IN THE DATABASE
+// RETURNS ALL THE CARS IN THE DATABASE
 router.get('/', function (req, res) {
     Car.find({}, function (err, cars) {
         if (err) return res.status(500).send("There was a problem finding the cars.");
@@ -27,7 +27,7 @@ router.get('/', function (req, res) {
     });
 });
 
-// GETS A SINGLE USER FROM THE DATABASE
+// GETS A SINGLE CAR FROM THE DATABASE
 router.get('/:id', function (req, res) {
     Car.findById(req.params.id, function (err, car) {
         if (err) return res.status(500).send("There was a problem finding the car.");
@@ -36,7 +36,7 @@ router.get('/:id', function (req, res) {
     });
 });
 
-// DELETES A USER FROM THE DATABASE
+// DELETES A CAR FROM THE DATABASE
 router.delete('/:id', function (req, res) {
     Car.findByIdAndRemove(req.params.id, function (err, car) {
         if (err) return res.status(500).send("There was a problem deleting the car.");
@@ -44,7 +44,7 @@ router.delete('/:id', function (req, res) {
     });
 });
 
-// UPDATES A SINGLE USER IN THE DATABASE
+// UPDATES A SINGLE CAR IN THE DATABASE
 router.put('/:id', function (req, res) {
 
     Car.findByIdAndUpdate(req.params.id, req.body, {new: true}, function (err, car) {
