@@ -40,7 +40,7 @@ router.get('/:id', function (req, res) {
 router.delete('/:id', function (req, res) {
     Car.findByIdAndRemove(req.params.id, function (err, car) {
         if (err) return res.status(500).send("There was a problem deleting the car.");
-        res.status(200).send("Car "+ car.model +" was deleted.");
+        res.status(200).send("Car "+ car.make + " "+ car.model +" was deleted.");
     });
 });
 
