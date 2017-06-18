@@ -5,7 +5,9 @@ var app = express();
 var db = require('./db');
 
 var UserController = require('./user/UserController');
+var CarController = require('./car/CarController');
 app.use('/users', UserController);
+app.use('/cars', CarController);
 
 app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/views');
